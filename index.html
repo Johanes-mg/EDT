@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emploi du temps</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="edt.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img
+          src="images/sun.png"
+          alt=""
+          class="title-icon"
+          width="22"
+          height="22"
+          loading="eager"
+        />
+        <span>EMPLOI DU TEMPS</span>
+      </h1>
+      <div class="toolbar">
+        <div class="field">
+          <label for="classeInput">Classe</label>
+          <input type="text" id="classeInput" placeholder="Nom de la classe" />
+        </div>
+        <div class="field">
+          <label for="etabInput">Établissement</label>
+          <input
+            type="text"
+            id="etabInput"
+            placeholder="Nom de l'établissement"
+          />
+        </div>
+        <div class="field field-double">
+          <label for="anneeStartInput">Année scolaire</label>
+          <input
+            type="text"
+            id="anneeStartInput"
+            placeholder="début"
+            maxlength="4"
+          />
+          <span class="sep">–</span>
+          <input
+            type="text"
+            id="anneeEndInput"
+            placeholder="fin"
+            maxlength="4"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="edt-title">
+        <h2>EMPLOI DU TEMPS (<span id="anneeDisplay">—</span>) :</h2>
+        <p>
+          Classe de <span id="classeDisplay">—</span> -
+          <span id="etabDisplay">—</span>
+        </p>
+      </div>
+
+      <section class="edt-section" data-period="MATIN">
+        <div class="section-title">MATIN</div>
+        <table class="edt-table" id="tableMatin">
+          <thead>
+            <tr class="days-row">
+              <th class="col-horaire">HORAIRE</th>
+            </tr>
+          </thead>
+          <tbody id="bodyMatin"></tbody>
+        </table>
+      </section>
+
+      <section class="edt-section" data-period="APREM">
+        <div class="section-title">APRÈS-MIDI</div>
+        <table class="edt-table" id="tableAprem">
+          <thead>
+            <tr class="days-row">
+              <th class="col-horaire">HORAIRE</th>
+            </tr>
+          </thead>
+          <tbody id="bodyAprem"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <div class="excel-bar" id="excelBar">
+      <div class="excel-group">
+        <span class="excel-label">MATIN</span>
+        <button class="excel-btn" id="addSlotMatin" title="Ajouter une ligne">
+          <img
+            src="images/add.png"
+            alt=""
+            class="btn-icon"
+            width="15"
+            height="15"
+          />
+          <span>Ajouter ligne</span>
+        </button>
+        <button
+          class="excel-btn"
+          id="removeSlotMatin"
+          title="Retirer une ligne"
+        >
+          <img
+            src="images/remove.png"
+            alt=""
+            class="btn-icon"
+            width="15"
+            height="15"
+          />
+          <span>Retirer ligne</span>
+        </button>
+      </div>
+
+      <div class="excel-sep"></div>
+
+      <div class="excel-group">
+        <span class="excel-label">APRÈS-MIDI</span>
+        <button class="excel-btn" id="addSlotAprem" title="Ajouter une ligne">
+          <img
+            src="images/add.png"
+            alt=""
+            class="btn-icon"
+            width="15"
+            height="15"
+          />
+          <span>Ajouter ligne</span>
+        </button>
+        <button
+          class="excel-btn"
+          id="removeSlotAprem"
+          title="Retirer une ligne"
+        >
+          <img
+            src="images/remove.png"
+            alt=""
+            class="btn-icon"
+            width="15"
+            height="15"
+          />
+          <span>Retirer ligne</span>
+        </button>
+      </div>
+
+      <div class="excel-spacer"></div>
+
+      <div class="excel-group">
+        <button
+          class="excel-btn excel-primary"
+          id="exportPdfBtn"
+          title="Exporter en PDF"
+        >
+          <img
+            src="images/export-pdf.png"
+            alt=""
+            class="btn-icon"
+            width="15"
+            height="15"
+          />
+          <span>Exporter PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 id="modalTitle">Édition</h3>
+          <button class="modal-close" id="modalClose">×</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer">
+          <button class="excel-btn" id="modalCancel">Annuler</button>
+          <button class="excel-btn excel-primary" id="modalConfirm">
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="edt.js" defer></script>
+  </body>
+</html>
