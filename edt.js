@@ -11,6 +11,7 @@
   }
 
   const DAYS = ["LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI"];
+  const DAYS_SHORT = ["L", "M", "M", "J", "V", "S"];
 
   const DEFAULT_COLORS = [
     "#dc2626",
@@ -114,6 +115,10 @@
 
   let modalOnConfirm = null;
 
+  function isSmallScreen() {
+    return window.matchMedia("(max-width: 768px)").matches;
+  }
+
   function save() {
     try {
       const payload = {
@@ -214,6 +219,8 @@
   }
 
   function buildHeaders() {
+    const isSmall = isSmallScreen();
+
     [tableMatin, tableAprem].forEach((table) => {
       const daysRow = table.querySelector(".days-row");
       const frag = document.createDocumentFragment();
@@ -223,14 +230,26 @@
       thH.textContent = "HORAIRE";
       frag.appendChild(thH);
 
-      DAYS.forEach((j) => {
+      DAYS.forEach((j, i) => {
         const th = document.createElement("th");
-        th.textContent = j;
+        th.textContent = isSmall ? DAYS_SHORT[i] : j;
+        th.dataset.full = j;
+        th.dataset.short = DAYS_SHORT[i];
         frag.appendChild(th);
       });
 
       daysRow.innerHTML = "";
       daysRow.appendChild(frag);
+    });
+  }
+
+  function updateHeadersOnResize() {
+    const isSmall = isSmallScreen();
+    [tableMatin, tableAprem].forEach((table) => {
+      const ths = table.querySelectorAll(".days-row th:not(.col-horaire)");
+      ths.forEach((th, i) => {
+        th.textContent = isSmall ? DAYS_SHORT[i] : DAYS[i];
+      });
     });
   }
 
@@ -824,6 +843,7 @@
       }, 300);
     };
   }
+
   function escapeHtml(s) {
     return String(s).replace(
       /[&<>"']/g,
@@ -878,6 +898,8 @@
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "hidden") save();
     });
+
+    window.addEventListener("resize", updateHeadersOnResize);
   }
 
   function init() {

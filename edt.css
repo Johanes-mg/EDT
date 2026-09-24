@@ -687,6 +687,7 @@ thead th {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8b9cb;
 }
+
 @media (max-width: 768px) {
   html,
   body {
@@ -756,44 +757,50 @@ thead th {
   }
 
   .edt-table {
-    min-width: 500px;
+    min-width: 460px;
     font-size: 0.8rem;
   }
 
   .col-horaire {
-    width: 60px !important;
-    font-size: 0.58rem !important;
-    letter-spacing: 0.05em !important;
-    padding: 0.5rem 0.2rem !important;
+    width: 55px !important;
+    font-size: 0.6rem !important;
+    padding: 0.4rem 0.15rem !important;
   }
 
   .time-cell {
-    width: 60px;
-    padding: 0.5rem 0.2rem;
-    font-size: 0.7rem;
+    width: 55px;
+    padding: 0.4rem 0.15rem;
+    font-size: 0.68rem;
     white-space: normal;
     word-break: break-word;
-    line-height: 1.15;
+    line-height: 1.1;
   }
 
   thead th {
-    padding: 0.6rem 0.3rem;
-    font-size: 0.62rem;
-    height: 38px;
+    padding: 0.5rem 0.15rem;
+    font-size: 0.7rem;
+    height: 34px;
+    letter-spacing: 0.02em;
+  }
+
+  .days-row th {
+    font-size: 0.78rem;
+    font-weight: 800;
   }
 
   .subject-cell {
-    min-width: 65px;
-    height: 58px;
+    min-width: 55px;
+    height: 54px;
   }
 
   .subject-cell .subject-content {
-    min-height: 58px;
+    min-height: 54px;
   }
 
   .subject-cell .subject-line {
-    font-size: 0.72rem;
-    padding: 0.15rem 0.25rem;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.2rem;
+    letter-spacing: 0.02em;
   }
 
   .section-title {
@@ -803,9 +810,9 @@ thead th {
   }
 
   .remove-btn {
-    width: 18px;
-    height: 18px;
-    font-size: 11px;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
     top: 2px;
     right: 2px;
   }
@@ -904,73 +911,86 @@ thead th {
   }
 
   .edt-table {
-    min-width: 460px;
+    min-width: 420px;
   }
 
   .col-horaire {
-    width: 55px !important;
+    width: 50px !important;
     font-size: 0.55rem !important;
-    padding: 0.4rem 0.15rem !important;
+    padding: 0.35rem 0.1rem !important;
   }
 
   .time-cell {
-    width: 55px;
-    font-size: 0.65rem;
-    padding: 0.4rem 0.15rem;
+    width: 50px;
+    font-size: 0.62rem;
+    padding: 0.35rem 0.1rem;
     white-space: normal;
     word-break: break-word;
     line-height: 1.1;
   }
 
+  .days-row th {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.1rem;
+  }
+
   .subject-cell {
-    min-width: 60px;
-    height: 54px;
+    min-width: 52px;
+    height: 50px;
   }
 
   .subject-cell .subject-content {
-    min-height: 54px;
+    min-height: 50px;
   }
 
   .subject-cell .subject-line {
-    font-size: 0.66rem;
-    padding: 0.1rem 0.2rem;
+    font-size: 0.64rem;
+    padding: 0.1rem 0.15rem;
   }
 }
 
-@media (max-width: 480px) {
-  .field {
-    flex: 1 1 100%;
-  }
-
-  .excel-label {
-    display: none;
-  }
-
-  .excel-btn {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.7rem;
-  }
-
+@media (max-width: 360px) {
   .edt-table {
-    min-width: 600px;
+    min-width: 380px;
   }
 
   .col-horaire {
-    width: 80px !important;
+    width: 45px !important;
+    font-size: 0.5rem !important;
   }
 
   .time-cell {
-    width: 80px;
-    font-size: 0.7rem;
-    padding: 0.5rem 0.2rem;
+    width: 45px;
+    font-size: 0.58rem;
   }
 
   .subject-cell {
-    min-width: 70px;
+    min-width: 48px;
   }
 
   .subject-cell .subject-line {
-    font-size: 0.68rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .edt-section {
+    position: relative;
+  }
+
+  .edt-section::after {
+    content: "←  glisser  →";
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #7d8f9f;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2px 8px;
+    border-radius: 10px;
+    pointer-events: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 }
 
