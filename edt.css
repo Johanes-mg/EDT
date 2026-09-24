@@ -687,7 +687,6 @@ thead th {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8b9cb;
 }
-
 @media (max-width: 768px) {
   html,
   body {
@@ -757,19 +756,24 @@ thead th {
   }
 
   .edt-table {
-    min-width: 640px;
+    min-width: 500px;
     font-size: 0.8rem;
   }
 
   .col-horaire {
-    width: 90px !important;
-    font-size: 0.62rem !important;
+    width: 60px !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.05em !important;
+    padding: 0.5rem 0.2rem !important;
   }
 
   .time-cell {
-    width: 90px;
-    padding: 0.6rem 0.3rem;
-    font-size: 0.75rem;
+    width: 60px;
+    padding: 0.5rem 0.2rem;
+    font-size: 0.7rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.15;
   }
 
   thead th {
@@ -779,7 +783,7 @@ thead th {
   }
 
   .subject-cell {
-    min-width: 75px;
+    min-width: 65px;
     height: 58px;
   }
 
@@ -806,7 +810,6 @@ thead th {
     right: 2px;
   }
 
-  /* Barre du bas */
   .excel-bar {
     padding: 0.5rem 0.6rem;
     gap: 0.4rem;
@@ -837,7 +840,6 @@ thead th {
     height: 22px;
   }
 
-  /* Modale */
   .modal {
     min-width: 95vw;
     max-width: 95vw;
@@ -884,6 +886,54 @@ thead th {
   .modal-footer {
     padding: 0.8rem 1rem;
     gap: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .field {
+    flex: 1 1 100%;
+  }
+
+  .excel-label {
+    display: none;
+  }
+
+  .excel-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .edt-table {
+    min-width: 460px;
+  }
+
+  .col-horaire {
+    width: 55px !important;
+    font-size: 0.55rem !important;
+    padding: 0.4rem 0.15rem !important;
+  }
+
+  .time-cell {
+    width: 55px;
+    font-size: 0.65rem;
+    padding: 0.4rem 0.15rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.1;
+  }
+
+  .subject-cell {
+    min-width: 60px;
+    height: 54px;
+  }
+
+  .subject-cell .subject-content {
+    min-height: 54px;
+  }
+
+  .subject-cell .subject-line {
+    font-size: 0.66rem;
+    padding: 0.1rem 0.2rem;
   }
 }
 
